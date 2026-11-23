@@ -63,3 +63,14 @@ Use [regression-cases.md](../tests/regression-cases.md), especially prompt leaka
 - Prompt-only review can **pass the prompt audit** but cannot pass image realism review.
 - Aesthetic options (grain, bloom, shallow DOF, symmetry, soft light) cannot be hard failures merely because they are present; inspect whether they are *physically coherent and appropriate to user intent*.
 - The scoring rubric above remains editorial guidance; never claim it is a measured probability of being photographic.
+
+## Anti-Render & Anti-Staging Checks
+
+Use these during the **post-generation visual audit** if an image is available. The corresponding scene assumptions can also be checked before generation.
+
+- [ ] **No Fake HDR Interior Lift:** If exposed for bright daylight, do unlit interiors stay convincingly darker than the outdoors, unless another light source, exposure strategy or acknowledged composite explains their visibility?
+- [ ] **No Patchy / Inconsistent Blur:** Does focus follow credible three-dimensional distance and lens behavior rather than sudden blur patches across connected objects at comparable distance?
+- [ ] **No Plastic/Molded Prop Look:** Do leaves, food, textiles, bamboo and wood show plausible structure, fiber, folds and material-dependent reflectance rather than the same smooth 3D-asset sheen?
+- [ ] **No Over-Curated Movie-Set Staging:** For candid or lived-in scenes, are use patterns and object arrangements believable instead of uniformly pristine or showroom-perfect? Do not penalize intentionally tidy interiors or formal symmetrical photography.
+
+These are **context-sensitive checks**, not universal bans on HDR techniques, symmetry, glossy materials or neat environments. A prompt-only review cannot confirm the image passed these checks.
