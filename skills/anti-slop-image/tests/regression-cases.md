@@ -1,16 +1,16 @@
 # Historical feedback regression cases
 
-Use this list to evaluate prompt rewriting and, when an output image exists, visual QA. These cases are condensed from prior user feedback; identifiers are examples, not downloadable test assets.
+Use this list to evaluate **pre-generation prompt transformation only**, not generated-image review. These cases are condensed from prior user feedback; identifiers are examples, not downloadable test assets.
 
 | Case | Input intent | Failure to prevent | Expected skill behavior |
 | --- | --- | --- | --- |
 | CDL-0021/0027 | One photographic scene | Multi-panel labeled collage | Explicit single-frame scene; reject collage |
 | CDL-0026 | Room, moving boxes | Generic coffee, flowers, notebook | Preserve room/boxes as main subject |
-| CDL-0027 | Vietnamese bread | Missing requested bread | Repeat must-have object in prompt and QA |
+| CDL-0027 | Vietnamese bread | Missing requested bread | Repeat must-have object clearly in prompt |
 | CDL-0032 | Photographic scene | Dashboard infographic | Require photographic composition, not graphics |
-| CDL-0033 | Exact square | Near-square noncompliance | Specify 1:1 and verify actual output size |
+| CDL-0033 | Exact square | Near-square noncompliance | Specify 1:1 and request exact output ratio |
 | TT100-010 | Door, suitcase, keys | Coffee props substituted | Main subject fidelity over style clichés |
-| TT100-013 | One apartment/porch scene | Two scenes mixed; wrong text | One scene; exact text verification |
+| TT100-013 | One apartment/porch scene | Two scenes mixed; wrong text | One scene; specify exact requested text before generation |
 | TT100-059 | Adult male from behind | Wrong cast or frontal face | Conditional project profile enforces casting |
 | TT100-074 | Documentary image | Oversized poster typography | No unsolicited large lettering |
 | TT100-078 | Natural focus | Uniform sharpness / fake bokeh | Plan focus plane, realistic distance falloff |
@@ -29,11 +29,11 @@ For each case inspect the **written prompt** before attempting generation:
 4. Are project-specific assumptions loaded only when relevant?
 5. Is the text directly usable in ChatGPT Images, Gemini or a generic generator?
 
-Visual checks require real generated outputs; prompt-only success is not a claim that the image was rendered or passed QA.
+These tests check the completeness and internal consistency of the *written prompt before generation*. Do not run rendered-image QA as part of this skill.
 
 ## Optical realism pack — v1.1 regression scenarios
 
-| Case | Scene and purpose | Failure to detect | Pass condition (prompt; visual output if available) |
+| Case | Scene and purpose | Pre-generation risk to prevent | Prompt pass condition |
 | --- | --- | --- | --- |
 | Shallow focus | Close portrait at f/1.2–f/1.4 with background lights, stated subject distance | Sharp far background, arbitrary blur on same-distance features | Camera distance and intended focal subject identified; defocus follows plausible optical geometry rather than a pasted mask |
 | Grounded object | Cup/box/shoe on a table/floor in diffuse or directional light | Floating object, missing occlusion, shadow direction inconsistent | Plausible supporting surface, contact grounding and lighting response, without mandatory harsh black border |
@@ -47,7 +47,7 @@ Visual checks require real generated outputs; prompt-only success is not a claim
 | Editing preservation | Add a lamp to an existing photograph | Scene, camera, unrelated objects drift | Authorized edit alone plus physically required local effects; protected geometry preserved |
 
 ### Testing scope
-These are **manual prompt-level regression specifications**, not automated image-generation assertions. Do not report any test as visually passed without supplying and inspecting generated images. Use the existing historical cases above as well.
+These are **manual pre-generation prompt specifications**. Test the produced prompt, not a rendered image. A pass means the prompt contains appropriate realism constraints without contradiction; it does not guarantee the generator obeys them.
 
 ### 5.5 Long Cast Shadows & Secondary Background Props Test
 
@@ -55,4 +55,4 @@ These are **manual prompt-level regression specifications**, not automated image
 - **Failure Mode to Catch:** Incompatible world-space shadow vectors or lengths (after accounting for perspective and surface slopes); shadow forms melted into ambiguous blobs despite adequate visibility; distorted distant wheels, spokes, rails or bars fused into walls; leaves floating or looking flat and pasted on.
 - **Pass Criteria:** Shadows remain physically consistent with the dominant light and receiving surfaces; object silhouettes and long-shadow contours are believable at the rendered scale; distant props retain coherent mechanical geometry; small debris makes credible contact with uneven ground.
 - **Prompt-level acceptance:** The generated prompt explicitly preserves motivated light direction, shadow-ground interaction, secondary prop structure and debris contact where relevant.
-- **Image-level acceptance:** Only mark the case visually passed after inspecting an actual rendered image; report untested otherwise.
+- **Scope boundary:** Evaluate the prompt's preventive instructions only; no post-generation visual acceptance occurs in this skill.
