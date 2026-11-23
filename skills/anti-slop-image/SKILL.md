@@ -94,3 +94,16 @@ For an **edit**, read [image-editing.md](references/image-editing.md) and make p
 - [Prompt examples](examples/README.md)
 - [Regression cases](tests/regression-cases.md)
 - [Sources and acknowledgments](references/sources.md)
+
+## Photographer-first planning and consistency (v1.1)
+
+Build a private **[Photo Shot Plan](references/photo-shot-plan.md)** before composing the final natural-language prompt. This is an internal scene specification, not a mandatory user-facing YAML block.
+
+1. **Scene state first:** set camera position/height/distance, subject behavior, primary and optional secondary light sources, focal priority, composition, and relevant materials **before** aesthetic adjectives. Choose focal length/aperture only where useful; avoid specifying fake EXIF as a guarantee of output.
+2. **Cross-variable consistency:** reconcile aperture with subject distance/sensor framing and requested depth of field; reconcile shutter and camera movement with blur; reconcile light direction, apparent size, shadow softness, bounce and reflections. Reject contradictory configurations.
+3. **Preservation boundaries:** for edits and iterations explicitly state `MUST KEEP`, `CHANGE ONLY`, `BLEND NATURALLY` and any secondary changes physically required (e.g. cast shadows).
+4. **Observable physics instead of buzzwords:** use concrete depth cues, directional light, surface response, visible textures and story-driven framing instead of stacked `8k/ultra-realistic/cinematic` terms.
+5. **Two-stage audit:** review the *prompt* before output using [quality-audit.md](references/quality-audit.md); inspect the *image* only if an actual generated image is available. Compare against [regression cases](tests/regression-cases.md).
+6. **Keep the prompt portable:** translate the plan into a cohesive scene description; avoid exposing a full technical checklist or inventing supported model flags.
+
+A skill that produces only a prompt must never claim the resulting image passed post-generation QA.
