@@ -53,10 +53,71 @@ There is no universal one-click installer. The method depends on your product:
 | **ChatGPT chat or Project** | Attach the `SKILL.md` text/file and the relevant reference files, or place them in available Project/knowledge files. Ask ChatGPT to follow `anti-slop-image` when writing the prompt. |
 | **Custom GPT (if supported by your account)** | Add the skill and its references as knowledge; in its instructions, tell it to consult `SKILL.md` and select references based on the task. |
 | **Gemini chat** | Provide the skill text and relevant reference documents through supported file upload or paste them into the conversation. Ask Gemini to follow the skill. |
+| **Claude chat / Projects** | Upload the skill instructions and relevant references to a chat, or add them to Claude Project knowledge with project instructions telling Claude to use `SKILL.md`. See [Claude setup](#claude-chat-and-claude-code). |
+| **Claude Code** | Install the whole skill folder in `~/.claude/skills/anti-slop-image/` for personal use or `.claude/skills/anti-slop-image/` for one project; run `/anti-slop-image`. See [Claude setup](#claude-chat-and-claude-code). |
 | **Coding agent with skills support** | Put the **whole** `skills/anti-slop-image/` directory in the tool's documented skill location. The specific install path and discovery behavior are agent-dependent. |
 | **Other AI assistant** | Paste `SKILL.md` and the applicable references, then give your image idea. Long context may require selecting only the relevant references. |
 
 These are **manual/compatible loading approaches**, not verified automatic GitHub integrations. If your assistant cannot read local files or URLs, paste the contents explicitly.
+
+### Claude chat and Claude Code
+
+#### Claude chat / Projects (no terminal required)
+
+1. Download this repository or open the Markdown files on GitHub.
+2. In [Claude](https://claude.ai/), use the file attachment control to provide `skills/anti-slop-image/SKILL.md` **plus the relevant files in `references/`**. If your file-upload interface does not accept a `.md` file, paste its content or provide it as plain text.
+3. For repeated use, create a **Project**, add the skill documents to Project knowledge, and set project instructions such as: `For image prompt creation or image realism reviews, follow the attached anti-slop-image SKILL.md and consult the appropriate references. Return a copy-ready prompt by default.`
+4. Ask for a prompt and take it to your chosen image generator; Claude chat should not be assumed to offer a native photographic image-generation tool.
+
+**Example — Claude chat:**
+
+```text
+Use the attached anti-slop-image skill.
+Write a copy-ready image prompt for an authentic Vietnamese street scene
+at 5 PM with a bicycle leaning against an old yellow wall.
+Keep the camera position, light direction, materials and focus physically plausible.
+Target image generator: generic. Return only the prompt, not an image.
+```
+
+Claude Project knowledge and instructions can be reused across chats inside that Project; a single chat attachment is not a universal skill installation.
+
+#### Claude Code — install as a real slash-invokable skill
+
+Claude Code discovers skills from supported skill directories. After cloning or downloading the repo, run the following commands **from the repository root**:
+
+**Personal installation** — available in your local Claude Code projects:
+
+```bash
+mkdir -p ~/.claude/skills
+cp -R skills/anti-slop-image ~/.claude/skills/anti-slop-image
+```
+
+**Project-only installation** — run from the target project's root (adjust the source path to your downloaded repository):
+
+```bash
+mkdir -p .claude/skills
+cp -R /path/to/Social-skills/skills/anti-slop-image .claude/skills/anti-slop-image
+```
+
+The **entire folder** must be copied, not just `SKILL.md`, because its Markdown instructions refer to adjacent `references/`, `examples/` and `tests/` files.
+
+Then start Claude Code in the relevant project:
+
+```bash
+claude
+```
+
+Invoke the skill explicitly:
+
+```text
+/anti-slop-image Create a documentary photography prompt for
+an old bicycle on a quiet Vietnamese street at sunset.
+Target: ChatGPT Images. Prompt only.
+```
+
+Claude Code may also select the skill automatically for matching requests based on the `SKILL.md` description. Use `/skills` to inspect discovered skills if available in your Claude Code version. If the skill is not discovered, check the directory layout and restart the session. This repository stores source skills in `skills/` for portability; **that folder is not itself an automatic Claude Code install location**.
+
+Official docs: [Claude Code skills](https://code.claude.com/docs/en/skills) · [Claude Projects](https://support.claude.com/en/articles/9519177-how-can-i-create-and-manage-projects) · [Claude file uploads](https://support.claude.com/en/articles/8241126-upload-files-to-claude).
 
 ### 3. Give it a simple image idea
 
@@ -147,6 +208,8 @@ Your copy-ready prompt
 The default workflow is **idea → prompt**. Image generation, editing, publishing and uploads are **not automatic**. The skill does **not** claim to detect AI images with certainty or to force any model to obey exact camera metadata.
 
 ## Common questions
+
+**Can Claude Code use this as a real skill?** Yes—install the entire skill directory under a supported `.claude/skills/` path and invoke `/anti-slop-image`. Claude chat instead uses attached documents or Project knowledge.
 
 **Can I just send a link to this repository?** Sometimes, if an assistant can access the link and follow its referenced files. Reliable usage requires making the skill contents available to the assistant.
 
