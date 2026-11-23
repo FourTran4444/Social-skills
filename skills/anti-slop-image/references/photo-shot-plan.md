@@ -82,3 +82,15 @@ The exact site architecture should be verified with reference material if accura
 - Light, shadows, reflections and surface texture align.
 - The narrative and aesthetic intent survive without repeated cliché props.
 - The prompt is complete and ready to send to an image generator; do not inspect, score, or repair a rendered image under this skill.
+
+## Anti-Perfection planning pass (mandatory for documentary/ordinary-life requests)
+
+Before translating the internal plan into the final prompt, check:
+- What is the one part of this scene that deserves attention? Which supporting parts can remain visually ordinary?
+- Where would the real light naturally *not* be flattering? Allow those regions to be low-contrast, shadowed or unremarkable.
+- Which two or three material details matter, and which should be left undescribed rather than over-textured?
+- Are people, props, architecture, foliage and shadows placed too beautifully? Remove staged balancing that is not required.
+- Does wear correspond to real use and exposure, with intact/plain regions present as appropriate?
+- Have we manufactured "realism" by adding dirt, blur or grain? Remove those shortcuts.
+
+**Internal constraint:** Prefer an *observed ordinary moment with a clear emotional anchor* over a perfectly furnished cinematic tableau, unless the user explicitly requests art-directed polish.
