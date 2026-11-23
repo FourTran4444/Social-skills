@@ -53,3 +53,18 @@ Use the relevant checks silently while drafting. If a requirement is missing or 
 ## Preflight decision
 
 **READY TO GENERATE** means the prompt is complete and internally coherent, **not** that an image has been generated or visually verified. When a conflict exists, rewrite the prompt before delivery. Do not perform a post-render score or repair cycle as part of this skill.
+
+## High-priority pre-generation gate — Anti-Perfection
+
+Before returning the final prompt, resolve these upstream problems. This is **prompt design**, not an inspection of an image:
+
+- [ ] **Uneven visual attention:** Have we avoided making every background object, corner, wall and leaf equally sharp, visually prominent and attractive?
+- [ ] **No texture saturation:** Are detailed aging, fibers and microtexture selective and physically motivated instead of uniformly covering each surface?
+- [ ] **No ubiquitous ideal lighting:** Are there ordinary, subdued or shadowed areas, rather than carefully placed flattering light on every object?
+- [ ] **Natural scene placement:** Is the scene free of unnecessary showroom symmetry, four-corner foliage framing, and perfectly arranged props when the brief is candid?
+- [ ] **Room for the mundane:** Does the prompt allow some uninteresting areas, partial occlusions, ordinary pavement and quiet visual space?
+- [ ] **No fake realism shortcuts:** Are grain, dirt, low exposure, distortion and blur absent unless actually motivated or specifically requested?
+- [ ] **Preserve the story:** Does simplifying the scene maintain the core emotional subject instead of removing the meaning?
+- [ ] **Respect exceptions:** If the user explicitly asks for a polished advertising shot, formal symmetry, or ornate fine-art direction, do not force an unplanned snapshot aesthetic.
+
+**Priority:** If a technically coherent scene has become excessively curated, rewrite the photographic prompt to reduce global visual polish **before generation**. Do not attach a numerical score.

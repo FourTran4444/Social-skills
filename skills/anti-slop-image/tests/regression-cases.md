@@ -56,3 +56,15 @@ These are **manual pre-generation prompt specifications**. Test the produced pro
 - **Pass Criteria:** Shadows remain physically consistent with the dominant light and receiving surfaces; object silhouettes and long-shadow contours are believable at the rendered scale; distant props retain coherent mechanical geometry; small debris makes credible contact with uneven ground.
 - **Prompt-level acceptance:** The generated prompt explicitly preserves motivated light direction, shadow-ground interaction, secondary prop structure and debris contact where relevant.
 - **Scope boundary:** Evaluate the prompt's preventive instructions only; no post-generation visual acceptance occurs in this skill.
+
+## Anti-Perfection pre-generation regression cases
+
+| Prompt scenario | Failure to prevent before generation | Expected revised prompt |
+| --- | --- | --- |
+| Quiet Vietnamese alley with two walking shadows | Every object has dramatic highlights, perfect peeling paint, cinematic foliage frame, and all details equally emphasized | Two shadows carry the story; wall has plain sections; subdued unremarkable background; selective light and only plausible localized wear |
+| Ordinary clean kitchen | Skill injects grime, film grain and random clutter as proof of realism | Preserve naturally clean environment; avoid synthetic polish without manufacturing damage |
+| Weathered wall | Entire surface uniformly filled with picturesque moss, cracks and peeling paint | Physically caused, localized deterioration with large untouched/plain sections |
+| Street documentary | Background props all neatly positioned and independently eye-catching | Off-axis, incidental background arrangement and unobtrusive secondary objects |
+| Formal symmetric architecture explicitly requested | Skill forces arbitrary cropping and disorder | Preserve deliberate architectural symmetry and accurate geometry |
+
+Only evaluate **pre-generation prompt wording**. These are not image-level visual assertions.
