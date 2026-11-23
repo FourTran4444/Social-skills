@@ -48,3 +48,11 @@ Visual checks require real generated outputs; prompt-only success is not a claim
 
 ### Testing scope
 These are **manual prompt-level regression specifications**, not automated image-generation assertions. Do not report any test as visually passed without supplying and inspecting generated images. Use the existing historical cases above as well.
+
+### 5.5 Long Cast Shadows & Secondary Background Props Test
+
+- **Scenario:** Low-angle sunlit street, alley or courtyard featuring long cast shadows, foliage shadows, a parked bicycle or gate/railings in the background, and small fallen leaves or twigs on textured paving.
+- **Failure Mode to Catch:** Incompatible world-space shadow vectors or lengths (after accounting for perspective and surface slopes); shadow forms melted into ambiguous blobs despite adequate visibility; distorted distant wheels, spokes, rails or bars fused into walls; leaves floating or looking flat and pasted on.
+- **Pass Criteria:** Shadows remain physically consistent with the dominant light and receiving surfaces; object silhouettes and long-shadow contours are believable at the rendered scale; distant props retain coherent mechanical geometry; small debris makes credible contact with uneven ground.
+- **Prompt-level acceptance:** The generated prompt explicitly preserves motivated light direction, shadow-ground interaction, secondary prop structure and debris contact where relevant.
+- **Image-level acceptance:** Only mark the case visually passed after inspecting an actual rendered image; report untested otherwise.
