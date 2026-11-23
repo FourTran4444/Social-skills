@@ -59,7 +59,7 @@ generator:
 6. **Select composition intentionally:** rule of thirds, symmetry, leading lines, negative space and gaze room are optional tools, not enforced defaults.
 7. **Discard contradictions before output:** if a proposed camera setting conflicts with focus or lighting, adjust the setting or remove unnecessary numeric parameters.
 8. **Translate—not expose:** express the important scene choices in an approximately 120–250 word prompt unless the user requests otherwise. The user need not see the YAML.
-9. **Audit in two stages:** prompt readiness is checkable before generation; image quality is checkable only after inspecting an actual rendered result.
+9. **Pre-generation preflight only:** check the prompt against the physics and scene safeguards before handing it to an image generator. There is no post-render auditing stage in this skill.
 10. **Remain generator-independent:** output natural language and avoid pretending vendor-specific flags or precise lens effects are universally supported.
 
 ## Worked transformation
@@ -81,4 +81,4 @@ The exact site architecture should be verified with reference material if accura
 - Any numeric optics/exposure are coherent and optional, never treated as magic controls.
 - Light, shadows, reflections and surface texture align.
 - The narrative and aesthetic intent survive without repeated cliché props.
-- No image-level visual success is claimed when only prompt text exists.
+- The prompt is complete and ready to send to an image generator; do not inspect, score, or repair a rendered image under this skill.
