@@ -74,3 +74,13 @@ Use these during the **post-generation visual audit** if an image is available. 
 - [ ] **No Over-Curated Movie-Set Staging:** For candid or lived-in scenes, are use patterns and object arrangements believable instead of uniformly pristine or showroom-perfect? Do not penalize intentionally tidy interiors or formal symmetrical photography.
 
 These are **context-sensitive checks**, not universal bans on HDR techniques, symmetry, glossy materials or neat environments. A prompt-only review cannot confirm the image passed these checks.
+
+## Shadow & Background Integrity Checks
+
+Apply when the rendered scene contains cast shadows, small background structures or ground debris; assess the actual image rather than treating the written prompt as visual proof.
+
+- [ ] **Coherent Shadow Direction & Form:** For a dominant sun or other primary light, do cast shadows from people, props and foliage agree in world-space direction and plausible length after accounting for camera perspective, object height and receiving-surface slope? Are thin forms such as limbs, canes and bicycle components distinct where image resolution and real lighting support that detail, rather than inexplicably merged into dark blobs?
+- [ ] **Intact Distant Geometry:** Are background bicycles, wheels, gates, railings, bars and architecture structurally sound at the visible scale, rather than warped or fused into walls? Avoid mistaking legitimate occlusion, out-of-focus regions or low resolution for errors.
+- [ ] **Grounded Surface Debris:** Do fallen leaves, twigs and other small objects sit naturally against the ground, with plausible bending, overlap and contact rather than floating or looking pasted on?
+
+A major physical contradiction may trigger the existing hard-failure criteria. Otherwise report specific observable defects with severity and targeted corrections.
