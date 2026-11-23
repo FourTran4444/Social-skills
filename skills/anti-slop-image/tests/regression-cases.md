@@ -30,3 +30,21 @@ For each case inspect the **written prompt** before attempting generation:
 5. Is the text directly usable in ChatGPT Images, Gemini or a generic generator?
 
 Visual checks require real generated outputs; prompt-only success is not a claim that the image was rendered or passed QA.
+
+## Optical realism pack — v1.1 regression scenarios
+
+| Case | Scene and purpose | Failure to detect | Pass condition (prompt; visual output if available) |
+| --- | --- | --- | --- |
+| Shallow focus | Close portrait at f/1.2–f/1.4 with background lights, stated subject distance | Sharp far background, arbitrary blur on same-distance features | Camera distance and intended focal subject identified; defocus follows plausible optical geometry rather than a pasted mask |
+| Grounded object | Cup/box/shoe on a table/floor in diffuse or directional light | Floating object, missing occlusion, shadow direction inconsistent | Plausible supporting surface, contact grounding and lighting response, without mandatory harsh black border |
+| 85mm vs 24mm | Same subject across portrait and environmental framing at explicitly different camera distances | Treating focal length as the *cause* of changing perspective; distorted faces with wrong camera position | Physically coherent field of view, camera placement, scale relationships and convergence |
+| Skin and materials | Portrait or product packaging in daylight/window or studio lighting | Waxy skin, duplicated pores, plastic paper/metal/wood, pasted labels | Skin/micro-texture at plausible resolution; distinct material responses, folds and edges |
+| Camera movement | Panning cyclist with a slow shutter | Sharp background demanded as universal rule; anatomy warped to show blur | Tracked subject can stay relatively crisp while stationary background streaks in motion direction |
+| Aperture-distance | f/1.4 used for distant landscape subject | Universal claim that *all* f/1.4 scenes have razor-thin focus | DoF reasoning includes distance/sensor/focal length, without fabricated impossible blur |
+| Diffraction | Landscape f/16–f/22 | Unconditional "maximum detail everywhere" claim | Account for increased DoF and potential diffraction softness rather than promising absolute sharpness |
+| Mixed lighting | Evening shopfront and blue ambient sky | Every light rendered same temperature; shadow directions disagree | Plausible practical + ambient light with coherent color and shadow behavior |
+| Intentional optical look | Film portrait with ring bokeh, subtle bloom, grain | Reject legitimate optical character as AI slop by default | Allow optically justified ring bokeh, bloom and grain; reject unjustified patterned overlays |
+| Editing preservation | Add a lamp to an existing photograph | Scene, camera, unrelated objects drift | Authorized edit alone plus physically required local effects; protected geometry preserved |
+
+### Testing scope
+These are **manual prompt-level regression specifications**, not automated image-generation assertions. Do not report any test as visually passed without supplying and inspecting generated images. Use the existing historical cases above as well.
