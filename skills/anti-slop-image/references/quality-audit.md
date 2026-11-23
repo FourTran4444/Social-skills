@@ -36,3 +36,30 @@ For each issue:
 ## Regression tests
 
 Use [regression-cases.md](../tests/regression-cases.md), especially prompt leakage, accidental collage, stereotyped café props, fake shallow depth, oversized typography, mismatched silhouettes and edit drift.
+
+## Two-stage realism verification (v1.1)
+
+### Pre-generation prompt audit (always applicable)
+- [ ] Exact subject, setting, objects, action, exclusions and image format are retained.
+- [ ] Camera position and framing are defined where useful; focal length is not confused with perspective caused by camera distance.
+- [ ] Requested depth of field is physically compatible with aperture **and** subject distance, focal length, sensor/framing assumptions.
+- [ ] Motion blur fits shutter/camera/subject motion, including panning where specified.
+- [ ] Light direction, source size, shadow softness, bounce light, color temperature and reflections do not contradict one another.
+- [ ] Material descriptions reflect visible scale: no arbitrary pores, maximum texture on every surface or compulsory artificial grain.
+- [ ] No meaningless buzzword stacks, generic props, surprise typography or unsupported generator control syntax.
+- [ ] For edits: `MUST KEEP`, `CHANGE ONLY`, and `BLEND NATURALLY` boundaries remain explicit.
+
+### Post-generation visual audit (only if an image can actually be inspected)
+- [ ] **Focus/DoF:** credible focus surface and depth-dependent defocus, without random 2D blur masks or inconsistent sharpness.
+- [ ] **Perspective:** object proportions, near/far scale, tilted verticals and reflections align with camera position.
+- [ ] **Lighting:** cast shadows, subtle contact grounding, indirect fill and mixed temperatures agree with the scene.
+- [ ] **Materials:** distinct realistic skin, fabric, paper, glass, metal and wood behavior at the visible image scale; not waxy/plastic or oversharpened.
+- [ ] **People:** hands, joints, poses, eye lines and grips are coherent; no duplicated or deformed anatomy.
+- [ ] **Text/logos:** exact requested spelling and typography, with no unsolicited words or marks.
+- [ ] **Composition:** focal anchor and relevant space for gaze/movement, unless intentional tight framing; avoid stray edge clipping.
+- [ ] **Instructions:** aspect ratio, scene location, core objects and protected edit regions are correct.
+
+### Evidence boundary
+- Prompt-only review can **pass the prompt audit** but cannot pass image realism review.
+- Aesthetic options (grain, bloom, shallow DOF, symmetry, soft light) cannot be hard failures merely because they are present; inspect whether they are *physically coherent and appropriate to user intent*.
+- The scoring rubric above remains editorial guidance; never claim it is a measured probability of being photographic.
