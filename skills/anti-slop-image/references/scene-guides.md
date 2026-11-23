@@ -63,3 +63,18 @@ These are **optional scene-specific patterns**, not fixed templates.
 - **Reject "Movie-Set" Symmetry & Framing:** For candid/documentary scenes, resist mechanically centered hero objects, identical spacing, and foliage deliberately framing all four corners. Favor naturally off-axis framing and occasionally cropped secondary elements when they support the moment. Deliberate symmetry remains valid for architecture, formal portraits or intentional fine-art compositions.
 - **Lived-In Functional Clutter:** When the scene depicts ongoing activity, include a few contextually credible traces of use: trimmed leaf scraps, uneven folds, slightly off-center placement, worn tools, or practical asymmetry. Avoid pristine staged prop arrangements, but do not force mess, wear or unrelated items into genuinely tidy, new or minimalist environments.
 - **Tactile Botanical & Craft Physics:** Fresh leaves, woven bamboo, paper and food should exhibit plausible creases, fiber grain, small edge differences, realistic folding and tension, and appropriate matte-to-satin reflectance. Avoid uniform molded-plastic gloss, repeated identical leaf shapes and impossible weave patterns; recognize that some wet or waxy natural surfaces can legitimately be glossy.
+
+## Natural Imperfection & Anti-Perfection — observed, not designed
+
+The best ordinary-life prompt often *leaves something alone*. Use this principle upstream during scene construction, not to score an existing rendered image.
+
+- **Uneven Visual Importance:** One main subject or emotional event can carry the frame; secondary doors, plants, walls and distant objects can be unremarkable or partially obscured without becoming individually photogenic.
+- **Selective Detail:** Describe texture only where the camera and story make it observable. Avoid hyperdefined grain, moss, peeling paint, rust, foliage and concrete across every inch.
+- **Ordinary Lighting:** A real street can have dull patches, low-contrast shade and uninteresting regions. Do not distribute perfect sunlight, highlights and color separation onto every material.
+- **Incidental Composition:** Allow natural object placement, off-axis perspective, cropped peripheral elements and imperfect spacing without losing the main subject.
+- **Nonuniform Aging:** Wear accumulates at plausible contact, rainwater, sunlight and moisture locations. Large intact areas may coexist with localized damage.
+- **Unremarkable Areas:** Explicitly permit plain walls, stretches of ordinary pavement, quiet backgrounds and areas with little visual information.
+- **Resist Over-Art-Direction:** Do not turn every alley, market or home into a curated editorial set. Avoid balancing each secondary prop, foliage frame, patch of sunlight and shadow into a flawless pattern.
+- **No staged flaws:** Avoid deliberate dirt, false handheld blur, film grain, exaggerated unevenness or misplaced junk. Clean environments can still be real; purposeful visual beauty is allowed when requested.
+
+**Example conversion:** Instead of “intricately peeling paint and moss across the entire picturesque wall, spectacular sunbeams everywhere, exquisitely textured pavement,” prefer “mostly ordinary faded plaster with a few localized rain-worn areas near the base; some sections of wall and pavement remain visually plain; partial tree shade falls unevenly and without a deliberate decorative pattern.”
