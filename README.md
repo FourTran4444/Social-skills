@@ -36,7 +36,7 @@ skills/anti-slop-image/
 │   ├── scene-guides.md         # Landscape, street, portrait, interiors, etc.
 │   ├── generator-adapters.md   # ChatGPT, Gemini, generic model guidance
 │   ├── image-editing.md        # Keep/change/blend constraints
-│   ├── quality-audit.md        # Before/after checks
+│   ├── quality-audit.md        # Before-generation prompt checks
 │   └── project-profiles.md     # Optional project-specific preferences
 ├── examples/README.md
 └── tests/regression-cases.md
@@ -205,7 +205,7 @@ Your copy-ready prompt
 Use the prompt in the chosen image generator (outside this skill)
 ```
 
-The default workflow is **idea → prompt**. Image generation, editing, publishing and uploads are **not automatic**. The skill does **not** claim to detect AI images with certainty or to force any model to obey exact camera metadata.
+The **only skill workflow** is **idea → preflighted prompt**. All optical, exposure, material and anti-slop checks happen before handing the prompt to an image generator. Image generation, editing, publishing and uploads are **not automatic**. The skill does **not** claim to detect AI images with certainty or to force any model to obey exact camera metadata.
 
 ## Common questions
 
