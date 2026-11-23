@@ -78,3 +78,18 @@ A valid final prompt must:
 - [Prompt examples](examples/README.md)
 - [Prompt regression cases](tests/regression-cases.md)
 - [Sources and acknowledgments](references/sources.md)
+
+## CORE PRIORITY — Natural Imperfection & Anti-Perfection
+
+**Realism means an observed moment, not maximum polish. This is a primary pre-generation rule, not optional post-render advice.** Before delivering any documentary, street, landscape or ordinary-life prompt:
+
+1. **Uneven visual importance:** give the meaningful subject priority. Secondary surfaces and distant objects may be visually quiet, partly occluded or unremarkable; do not make every corner a showcase.
+2. **Selective detail density:** specify a few credible identifying textures at realistic viewing scale, not pores, chips, moss, cracks, highlights and microcontrast everywhere.
+3. **Ordinary motivated light:** allow areas of flat or unexceptional lighting, natural darkness and subdued detail. Never require cinematic highlights on each object, uniformly lifted shadows or decorative dappled sun.
+4. **Incidental composition:** permit believable off-axis placements, peripheral cropping and visual interruptions where compatible with the user's subject; do not perfectly position every supporting item along leading lines.
+5. **Nonuniform aging and use:** if wear is relevant, localize it according to water, touch, sun, movement and use. Some areas may remain plain, clean or intact.
+6. **Resist over-art-direction:** do not automatically add atmosphere, complementary colors, pleasing symmetry, multiple storytelling props or decorative plants to make the image feel “finished.”
+7. **No artificial imperfection tricks:** do not manufacture blur, dirt, film grain, camera shake, stains or broken objects merely to fake authenticity.
+8. **Honor creative intent:** deliberate studio polish, formal symmetry or art-directed beauty remain valid when the user actually requests them.
+
+**Preflight gate:** Ask whether every item has been made visually interesting, whether all materials are excessively textured, or whether lighting conveniently flatters every part of the scene. If so, simplify the prompt and let ordinary regions stay ordinary. Physical plausibility is necessary but **not sufficient** for believable photographic naturalness.
