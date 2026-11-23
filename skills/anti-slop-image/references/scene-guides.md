@@ -57,3 +57,9 @@ These are **optional scene-specific patterns**, not fixed templates.
 - Show surface moisture, steam, crumbs, pores and texture **only where temperature, humidity and materials justify them**.
 - Vessels, utensils and ingredients must look physically supported, weighted and appropriately scaled; avoid glossy plastic-looking food.
 - Frame for appetizing visual storytelling without assuming a coffee cup, bokeh, window light or stock-ad perfection.
+
+## Anti-Staging & Lived-In Realism
+
+- **Reject "Movie-Set" Symmetry & Framing:** For candid/documentary scenes, resist mechanically centered hero objects, identical spacing, and foliage deliberately framing all four corners. Favor naturally off-axis framing and occasionally cropped secondary elements when they support the moment. Deliberate symmetry remains valid for architecture, formal portraits or intentional fine-art compositions.
+- **Lived-In Functional Clutter:** When the scene depicts ongoing activity, include a few contextually credible traces of use: trimmed leaf scraps, uneven folds, slightly off-center placement, worn tools, or practical asymmetry. Avoid pristine staged prop arrangements, but do not force mess, wear or unrelated items into genuinely tidy, new or minimalist environments.
+- **Tactile Botanical & Craft Physics:** Fresh leaves, woven bamboo, paper and food should exhibit plausible creases, fiber grain, small edge differences, realistic folding and tension, and appropriate matte-to-satin reflectance. Avoid uniform molded-plastic gloss, repeated identical leaf shapes and impossible weave patterns; recognize that some wet or waxy natural surfaces can legitimately be glossy.
