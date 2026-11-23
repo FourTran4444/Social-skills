@@ -1,86 +1,55 @@
-# Anti-Slop Visual Audit
+# Pre-Generation Realism Safeguards
 
-A **heuristic human-facing review aid**, not a calibrated AI-image detector or proof of authenticity. Only judge visual facts that can actually be inspected. Report "not assessable" if no image was supplied.
+**Purpose:** prevent predictable AI-image artifacts in the prompt **before** an image is generated. This is a prompt-preparation checklist, **not** an image inspection system, a score, a detector, or a post-generation QA workflow.
 
-## Hard failures (reject regardless of score)
-- Incorrect main subject, missing required object, incorrect specified text, wrong aspect ratio when essential.
-- Impossible architecture or geometry, duplicated body parts, severe anatomy or object deformation.
-- Impossible primary shadows/reflections/light source relationships without intentional surrealism/composite.
-- Edited regions replacing or materially changing protected image areas.
-- Unrequested collage, poster, logo or prominent typography violating constraints.
-- Misrepresenting a synthetic/composited image as unedited journalistic evidence.
+Use the relevant checks silently while drafting. If a requirement is missing or contradictory, **rewrite the prompt**. Do not present checkboxes or a numeric score to the user by default. The checklist cannot guarantee what a model will render.
 
-## Heuristic rubric, 100 points
-| Dimension | Max |
-| --- | ---: |
-| Camera, focus and photographic coherence | 20 |
-| Light, color and exposure plausibility | 20 |
-| Geometry, anatomy and object integrity | 20 |
-| Materials and environmental detail | 15 |
-| Composition and storytelling | 10 |
-| Subject/context instruction fidelity | 10 |
-| Overall naturalness | 5 |
+## 1. Subject and instruction fidelity
 
-Suggested triage: **85–100** candidate pass; **75–84** revise/review; **0–74** reject. A hard failure overrides totals. These numbers are an editorial rubric, NOT a probability or authenticity score.
+- [ ] Preserve the exact subject, activity, essential supporting objects, specified geography, mood, aspect ratio, and user exclusions.
+- [ ] Keep a single coherent scene rather than introducing unrequested collage/panels, infographic styling or multiple unrelated scenes.
+- [ ] Include exact required text only; avoid unsolicited typography, logos and watermarks.
+- [ ] Do not insert stock motifs (coffee cups, flowers, notebooks, rain, cinematic neon) unless meaningful or specifically requested.
+- [ ] Keep optional project-specific rules separate from universal ones.
 
-## Repair procedure
+## 2. Camera, optical coherence and motion
 
-For each issue:
-1. Quote/describe the specific visible defect (not generic "too AI").
-2. Link it to an applicable category above and identify severity.
-3. Supply a targeted instruction that corrects the physical cause.
-4. Preserve successful parts of the image and user requirements.
-5. After a new image is supplied, compare the new result against original defects.
-6. Stop pretending a revision succeeded if no generated image or visual readback exists.
+- [ ] Specify a meaningful camera position/height/distance and framing when it influences the image.
+- [ ] Distinguish camera-position perspective from focal-length field of view. Do not attribute perspective changes to lens focal length alone.
+- [ ] Reconcile sensor/framing assumptions, focus distance, aperture and intended depth of field. Focus follows plausible 3D distance and lens characteristics, not a patchy blur mask.
+- [ ] If subjects are moving, specify believable shutter/motion relationships; panning can make the tracked subject sharper than stationary backgrounds.
+- [ ] Do not force a single aperture, perfect sharpness everywhere, grain, flare, optical distortion or extreme bokeh in every scene.
 
-## Regression tests
+## 3. Exposure, light and shadow geometry
 
-Use [regression-cases.md](../tests/regression-cases.md), especially prompt leakage, accidental collage, stereotyped café props, fake shallow depth, oversized typography, mismatched silhouettes and edit drift.
+- [ ] Identify primary light direction, size/softness and relative intensity; include other practical or bounce sources only when credible.
+- [ ] Match shadow world-space direction and plausible lengths to source elevation, object heights, perspective and receiving-surface slopes.
+- [ ] Describe long shadows interacting with uneven paving, terrain and objects rather than uniform merged dark shapes.
+- [ ] Preserve realistic sensor dynamic range. In daylight-exposed scenes, unlit interiors may remain deep in shadow; avoid synthetic HDR-style uniformly lifted darkness unless lighting, exposure strategy or composite technique justifies it.
+- [ ] Keep reflections/refractions, light temperature and contact/ambient occlusion plausible. Diffuse light need not produce a black outline around every object.
 
-## Two-stage realism verification (v1.1)
+## 4. Objects, organic materials and lived-in composition
 
-### Pre-generation prompt audit (always applicable)
-- [ ] Exact subject, setting, objects, action, exclusions and image format are retained.
-- [ ] Camera position and framing are defined where useful; focal length is not confused with perspective caused by camera distance.
-- [ ] Requested depth of field is physically compatible with aperture **and** subject distance, focal length, sensor/framing assumptions.
-- [ ] Motion blur fits shutter/camera/subject motion, including panning where specified.
-- [ ] Light direction, source size, shadow softness, bounce light, color temperature and reflections do not contradict one another.
-- [ ] Material descriptions reflect visible scale: no arbitrary pores, maximum texture on every surface or compulsory artificial grain.
-- [ ] No meaningless buzzword stacks, generic props, surprise typography or unsupported generator control syntax.
-- [ ] For edits: `MUST KEEP`, `CHANGE ONLY`, and `BLEND NATURALLY` boundaries remain explicit.
+- [ ] Require credible geometry of foreground *and* small distant secondary objects, particularly bicycles, gates, railings, furniture, hands and tools.
+- [ ] Ensure small leaves, twigs and debris rest naturally on the ground and are not floating/pasted-on shapes.
+- [ ] Describe material-specific behavior: fabric weave/folds, skin texture at relevant scale, wood grain, glass thickness, metal finish, botanical fibers, bamboo tension, realistic food texture.
+- [ ] Let peeling paint, moss, stains and wear follow physical processes such as water runoff, handling, traffic, sunlight and moisture; avoid uniform procedural noise.
+- [ ] Use candid off-axis framing and traces of real use **where the scene calls for documentary realism**. Do not forbid genuine symmetry, orderly spaces, fine-art compositions or legitimately glossy materials.
+- [ ] Avoid decorative foliage in every corner or showroom-perfect staging unless requested.
 
-### Post-generation visual audit (only if an image can actually be inspected)
-- [ ] **Focus/DoF:** credible focus surface and depth-dependent defocus, without random 2D blur masks or inconsistent sharpness.
-- [ ] **Perspective:** object proportions, near/far scale, tilted verticals and reflections align with camera position.
-- [ ] **Lighting:** cast shadows, subtle contact grounding, indirect fill and mixed temperatures agree with the scene.
-- [ ] **Materials:** distinct realistic skin, fabric, paper, glass, metal and wood behavior at the visible image scale; not waxy/plastic or oversharpened.
-- [ ] **People:** hands, joints, poses, eye lines and grips are coherent; no duplicated or deformed anatomy.
-- [ ] **Text/logos:** exact requested spelling and typography, with no unsolicited words or marks.
-- [ ] **Composition:** focal anchor and relevant space for gaze/movement, unless intentional tight framing; avoid stray edge clipping.
-- [ ] **Instructions:** aspect ratio, scene location, core objects and protected edit regions are correct.
+## 5. Edit-request safeguards (when applicable)
 
-### Evidence boundary
-- Prompt-only review can **pass the prompt audit** but cannot pass image realism review.
-- Aesthetic options (grain, bloom, shallow DOF, symmetry, soft light) cannot be hard failures merely because they are present; inspect whether they are *physically coherent and appropriate to user intent*.
-- The scoring rubric above remains editorial guidance; never claim it is a measured probability of being photographic.
+- [ ] State the original elements to preserve: viewpoint, perspective, scene geometry, text, identities, crop and unchanged objects.
+- [ ] Delimit the exact authorized change and physically required local consequences (e.g. a new object's shadow).
+- [ ] Explicitly forbid unrelated edits, scene recreation and accidental text alterations.
 
-## Anti-Render & Anti-Staging Checks
+## 6. Cross-generator portability
 
-Use these during the **post-generation visual audit** if an image is available. The corresponding scene assumptions can also be checked before generation.
+- [ ] Make the prompt complete without requiring the generator to read this skill's reference files.
+- [ ] Write observable scene constraints, not “8K, masterpiece, hyperrealistic” stacks.
+- [ ] Include model-specific flags only when documented for the user's actual interface.
+- [ ] Produce a polished prompt the user can copy directly; do not output internal YAML or scored audits unless requested.
 
-- [ ] **No Fake HDR Interior Lift:** If exposed for bright daylight, do unlit interiors stay convincingly darker than the outdoors, unless another light source, exposure strategy or acknowledged composite explains their visibility?
-- [ ] **No Patchy / Inconsistent Blur:** Does focus follow credible three-dimensional distance and lens behavior rather than sudden blur patches across connected objects at comparable distance?
-- [ ] **No Plastic/Molded Prop Look:** Do leaves, food, textiles, bamboo and wood show plausible structure, fiber, folds and material-dependent reflectance rather than the same smooth 3D-asset sheen?
-- [ ] **No Over-Curated Movie-Set Staging:** For candid or lived-in scenes, are use patterns and object arrangements believable instead of uniformly pristine or showroom-perfect? Do not penalize intentionally tidy interiors or formal symmetrical photography.
+## Preflight decision
 
-These are **context-sensitive checks**, not universal bans on HDR techniques, symmetry, glossy materials or neat environments. A prompt-only review cannot confirm the image passed these checks.
-
-## Shadow & Background Integrity Checks
-
-Apply when the rendered scene contains cast shadows, small background structures or ground debris; assess the actual image rather than treating the written prompt as visual proof.
-
-- [ ] **Coherent Shadow Direction & Form:** For a dominant sun or other primary light, do cast shadows from people, props and foliage agree in world-space direction and plausible length after accounting for camera perspective, object height and receiving-surface slope? Are thin forms such as limbs, canes and bicycle components distinct where image resolution and real lighting support that detail, rather than inexplicably merged into dark blobs?
-- [ ] **Intact Distant Geometry:** Are background bicycles, wheels, gates, railings, bars and architecture structurally sound at the visible scale, rather than warped or fused into walls? Avoid mistaking legitimate occlusion, out-of-focus regions or low resolution for errors.
-- [ ] **Grounded Surface Debris:** Do fallen leaves, twigs and other small objects sit naturally against the ground, with plausible bending, overlap and contact rather than floating or looking pasted on?
-
-A major physical contradiction may trigger the existing hard-failure criteria. Otherwise report specific observable defects with severity and targeted corrections.
+**READY TO GENERATE** means the prompt is complete and internally coherent, **not** that an image has been generated or visually verified. When a conflict exists, rewrite the prompt before delivery. Do not perform a post-render score or repair cycle as part of this skill.

@@ -6,7 +6,7 @@ Open-source, reusable AI skills for creating better social and visual content. E
 
 | Skill | What it does | Start here |
 | --- | --- | --- |
-| **Anti-Slop Image** | Turns a simple idea into a realistic, photography-grounded prompt for ChatGPT Images, Gemini and other image generators. Also supports image-edit instructions and visual-quality reviews. | [Read the skill](skills/anti-slop-image/SKILL.md) · [Examples](skills/anti-slop-image/examples/README.md) |
+| **Anti-Slop Image** | Turns a simple idea into a realistic, photography-grounded prompt for ChatGPT Images, Gemini and other image generators. Also prepares preservation-aware image-edit prompts **before edits are executed**. | [Read the skill](skills/anti-slop-image/SKILL.md) · [Examples](skills/anti-slop-image/examples/README.md) |
 
 ## Anti-Slop Image — How to use
 
@@ -36,7 +36,7 @@ skills/anti-slop-image/
 │   ├── scene-guides.md         # Landscape, street, portrait, interiors, etc.
 │   ├── generator-adapters.md   # ChatGPT, Gemini, generic model guidance
 │   ├── image-editing.md        # Keep/change/blend constraints
-│   ├── quality-audit.md        # Before/after checks
+│   ├── quality-audit.md        # Before-generation prompt checks
 │   └── project-profiles.md     # Optional project-specific preferences
 ├── examples/README.md
 └── tests/regression-cases.md
@@ -66,7 +66,7 @@ These are **manual/compatible loading approaches**, not verified automatic GitHu
 
 1. Download this repository or open the Markdown files on GitHub.
 2. In [Claude](https://claude.ai/), use the file attachment control to provide `skills/anti-slop-image/SKILL.md` **plus the relevant files in `references/`**. If your file-upload interface does not accept a `.md` file, paste its content or provide it as plain text.
-3. For repeated use, create a **Project**, add the skill documents to Project knowledge, and set project instructions such as: `For image prompt creation or image realism reviews, follow the attached anti-slop-image SKILL.md and consult the appropriate references. Return a copy-ready prompt by default.`
+3. For repeated use, create a **Project**, add the skill documents to Project knowledge, and set project instructions such as: `For image prompt creation or pre-generation prompt realism checks, follow the attached anti-slop-image SKILL.md and consult the appropriate references. Return a copy-ready prompt by default.`
 4. Ask for a prompt and take it to your chosen image generator; Claude chat should not be assumed to offer a native photographic image-generation tool.
 
 **Example — Claude chat:**
@@ -163,16 +163,16 @@ Example (shortened):
 
 Paste that into ChatGPT Images, Gemini's image-generation interface or another compatible generator. If your AI assistant also has image-generation capability, **explicitly ask it to generate** after reviewing the prompt; writing a prompt does not automatically create an image.
 
-### 5. Review and improve the result (optional)
+### 5. Improve your prompt before generation (optional)
 
-After an image is generated, provide that **actual image** to an assistant using the skill:
+Before running the image generator, you can ask the skill to check and expand your **draft prompt**, not a rendered result:
 
 ```text
-Use anti-slop-image to review this generated image for artificial-looking details.
-Check camera perspective, depth of field, reflections, contact shadows,
-materials, anatomy, text and fidelity to my original request.
-List specific visible defects and give me a corrected image-generation prompt.
-Do not claim it passes image QA until you have inspected the image.
+Use anti-slop-image to strengthen this draft prompt BEFORE creating the image.
+Check that the scene, camera, depth of field, exposure, shadows, reflections,
+background objects, textures and ground contact are described coherently.
+Resolve contradictions and return one complete prompt for Gemini.
+Do not generate, inspect or score an image.
 ```
 
 For an **existing photo edit**:
@@ -202,10 +202,10 @@ Adapt natural-language prompt to ChatGPT / Gemini / generic generator
    ↓
 Your copy-ready prompt
    ↓
-(Optional) Generate image, inspect actual output, revise prompt
+Use the prompt in the chosen image generator (outside this skill)
 ```
 
-The default workflow is **idea → prompt**. Image generation, editing, publishing and uploads are **not automatic**. The skill does **not** claim to detect AI images with certainty or to force any model to obey exact camera metadata.
+The **only skill workflow** is **idea → preflighted prompt**. All optical, exposure, material and anti-slop checks happen before handing the prompt to an image generator. Image generation, editing, publishing and uploads are **not automatic**. The skill does **not** claim to detect AI images with certainty or to force any model to obey exact camera metadata.
 
 ## Common questions
 
@@ -219,7 +219,7 @@ The default workflow is **idea → prompt**. Image generation, editing, publishi
 
 **Will ChatGPT and Gemini produce exactly the same image?** No. Prompts are adapted for portability, but output and supported controls differ by model and interface.
 
-**How can I get more realistic images?** Generate, inspect the image, identify specific physical/artifact failures, and ask for a targeted revision. A good prompt improves direction but cannot guarantee a perfect result.
+**How can I get more realistic images?** Ask the skill to enrich and reconcile your idea **before generation**. It builds a physically coherent prompt with safeguards for lighting, optics, shadow geometry, materials and composition. A good prompt improves direction but cannot guarantee the image model's output.
 
 ## Documentation
 
@@ -228,7 +228,7 @@ The default workflow is **idea → prompt**. Image generation, editing, publishi
 - [Photography physics](skills/anti-slop-image/references/photography-physics.md)
 - [Landscape, street and other genres](skills/anti-slop-image/references/scene-guides.md)
 - [Generator adapters](skills/anti-slop-image/references/generator-adapters.md)
-- [Quality audit](skills/anti-slop-image/references/quality-audit.md)
+- [Pre-generation prompt safeguards](skills/anti-slop-image/references/quality-audit.md)
 - [Working examples](skills/anti-slop-image/examples/README.md)
 - [Regression cases](skills/anti-slop-image/tests/regression-cases.md)
 
